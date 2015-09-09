@@ -1,0 +1,46 @@
+<div class="container-fluid mt20"> 
+
+<%= simple_form_for @borrower_profile do |f| %>
+
+  <h2>Contact</h2>
+  <hr /> 
+  <%= f.input :mobile_phone %>
+  
+  <h2>Info Personal</h2>
+  <hr />
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :date_of_birth %>
+  <%= f.input :sex %>
+  <%= f.input :children %>
+  
+  
+  <h2>Domisili</h2>
+  <hr /> 
+  <%= f.input :address %>
+  <%= f.input :city %>
+  <%#= f.input :country %>
+  <%= f.input :zipcode %>
+  
+  
+  
+  
+  <h2>Rekening Bank</h2>
+  <hr /> 
+  <%= f.input :bank_name %>
+  <%= f.input :bank_branch_name %>
+  <%= f.input :bank_account_name %>
+  <%= f.input :bank_account_no %>
+  
+  
+  
+  <%= f.button :submit, "Simpan Info" %>
+<% end %>
+
+<br />
+     
+        
+        
+         
+</div>
+ 
