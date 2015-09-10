@@ -7,7 +7,7 @@ class WelcomeController < FrontendController
       if current_user.loan_requests.count == 0
         @loan_request = LoanRequest.new 
       else
-        @loan_request = current_user.loan_requests.order("id DESC").last 
+        @loan_request = current_user.loan_requests.order("id DESC").first 
       end
      
   end
