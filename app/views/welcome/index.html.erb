@@ -14,18 +14,49 @@
   </div>
   <div class='row'>
     <div class='col-sm-12 col-md-10 col-md-offset-1'>
-      <div class="video">
-        <div class="placeholder">
-          <div class="play-btn">
-            <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-thin fa-stack-2x"></i>
-                <i class="fa fa-play fa-stack-1x"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>
+      <%# if not @loan_request.persisted? %> 
+        <%= simple_form_for @loan_request do |f| %>
+         
+          <%= f.input :amount %>
+          <%= f.input :duration %>
+          <%= f.input :loan_purpose %>
+          
+    
+          
+          <%= f.button :submit, "Ajukan Peminjaman" %>
+        <% end %>
+      <%# else %>
+        <%#= simple_form_for @loan_request do |f| %>
+         
+          <%#= f.input :amount, disabled: true %>
+          <%#= f.input :duration, disabled: true %>
+          <%#= f.input :loan_purpose, disabled: true %>
+          
+          <%#= f.button :submit, "Lanjutkan applikasi peminjaman" %>
+          <!--<a class="btn btn-primary" href="#" role="button">Lanjutkan permohonan peminjaman</a> atau -->
+          <!--<a class="btn btn-default" href="#" role="button">Buat applikasi baru</a> -->
+        <%# end %>
+    
+      <%# end %> 
+      
+      
+      
+      <!--<div class="video">-->
+      <!--  <div class="placeholder">-->
+      <!--    <div class="play-btn">-->
+      <!--      This is the form: Enter amount, duration, and loan type-->
+            
+      <!--      <a href="#">-->
+      <!--        <span class="fa-stack fa-lg">-->
+      <!--          <i class="fa fa-circle-thin fa-stack-2x"></i>-->
+      <!--          <i class="fa fa-play fa-stack-1x"></i>-->
+      <!--        </span>-->
+      <!--      </a>-->
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--</div>-->
+      
+      
     </div>
   </div>
 </div>

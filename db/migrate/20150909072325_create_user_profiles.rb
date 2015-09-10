@@ -1,6 +1,16 @@
-class CreateBorrowerProfiles < ActiveRecord::Migration
+class CreateUserProfiles < ActiveRecord::Migration
   def change
-    create_table :borrower_profiles do |t|
+    create_table :user_profiles do |t|
+       
+      t.integer :user_id 
+      t.string :first_name
+      t.string :last_name 
+      t.string :fb_profile_image_url 
+      t.string :app_specific_facebook_url
+      
+       
+        
+        
       t.string :first_name
       t.string :last_name
       t.date :date_of_birth
@@ -31,7 +41,6 @@ class CreateBorrowerProfiles < ActiveRecord::Migration
       t.string :salary_receipt_url 
       t.string :other_proof_url 
       t.string :credit_card_bill_url
-      
 
       t.timestamps null: false
     end

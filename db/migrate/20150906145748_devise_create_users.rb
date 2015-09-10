@@ -7,6 +7,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       
       t.string :username
       t.string :name
+      t.boolean :is_guest, :default => false 
+      
 
       ## Recoverable
       t.string   :reset_password_token

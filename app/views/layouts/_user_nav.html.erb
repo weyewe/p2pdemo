@@ -5,9 +5,18 @@
   </div>
   <div class="navbar-text pull-right">
   
-    <%= fa_icon_tag "user" %> Welcome, <strong><%= current_user.name %></strong>
-    <span class="divider">|</span>
-    <%= link_to "Settings", "#" %>
+    <% if( current_user and not current_user.is_guest? ) %> 
+    
+      <%= fa_icon_tag "user" %> Welcome, 
+        <strong>
+          <%= current_user.user_profile.first_name %>
+          <%= current_user.user_profile.last_name %>
+        </strong>
+      <span class="divider">|</span> 
+    <% end %> 
+    
+    
+    <%= link_to "Settings", "#" %>`
   
   </div>
 </nav>

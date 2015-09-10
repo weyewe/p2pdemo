@@ -11,11 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907080403) do
+ActiveRecord::Schema.define(version: 20150909100626) do
 
-  create_table "borrower_profiles", force: :cascade do |t|
+  create_table "identities", force: :cascade do |t|
+    t.string   "username"
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "access_token"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "loan_requests", force: :cascade do |t|
+    t.string   "amount"
+    t.string   "duration"
+    t.string   "loan_purpose"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "fb_profile_image_url"
+    t.string   "app_specific_facebook_url"
     t.date     "date_of_birth"
     t.string   "sex"
     t.integer  "children"
@@ -28,29 +50,25 @@ ActiveRecord::Schema.define(version: 20150907080403) do
     t.string   "bank_account_no"
     t.string   "bank_name"
     t.string   "bank_branch_name"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  create_table "identities", force: :cascade do |t|
-    t.string   "username"
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "access_token"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "id_card_url"
+    t.string   "family_card_url"
+    t.string   "salary_receipt_url"
+    t.string   "other_proof_url"
+    t.string   "credit_card_bill_url"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "username"
     t.string   "name"
+    t.boolean  "is_guest",               default: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -59,11 +77,12 @@ ActiveRecord::Schema.define(version: 20150907080403) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,     null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "guest"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -72,18 +91,10 @@ ActiveRecord::Schema.define(version: 20150907080403) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
 
   create_table "work_experiences", force: :cascade do |t|
-    t.integer  "borrower_profile_id"
-    t.string   "company"
-    t.string   "position"
-    t.string   "monthly_salary"
-    t.string   "duration"
-    t.string   "address"
-    t.string   "city"
-    t.string   "country"
-    t.string   "zipcode"
-    t.string   "phone_number"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.string   "company_name"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

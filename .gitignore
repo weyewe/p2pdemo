@@ -18,3 +18,8 @@
 
 # Ignore application configuration
 /config/application.yml
+/config/facebook.yml
+/config/deploy.rb
+/config/secrets.yml
+/config/database.yml
+/config/application.yml
