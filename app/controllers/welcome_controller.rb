@@ -23,7 +23,7 @@ class WelcomeController < FrontendController
       end
     end
     
-    @loan_request = current_user.loan_requests.first 
+    @loan_request = current_user.loan_requests.order("id DESC").first 
     
  
   end

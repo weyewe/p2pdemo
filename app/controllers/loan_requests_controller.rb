@@ -21,7 +21,10 @@ class LoanRequestsController < FrontendController
   end
   
   def update
-    @object = LoanRequest.find_by_id params[:id]
+    
+    object = LoanRequest.where(:user_id => current_user.id, :id => params[:id]).order("id DESC").first 
+    
+     
     
     if @object.nil?
       redirect_to root_url 
@@ -30,8 +33,7 @@ class LoanRequestsController < FrontendController
     
     @object.amount = params[:loan_request][:amount]
     @object.loan_purpose =  params[:loan_request][:loan_purpose]
-    @object.duration =  params[:loan_request][:duration]
-    @object.user_id = current_user.id  
+    @object.duration =  params[:loan_request][:duration] 
     
     @object.save
      
