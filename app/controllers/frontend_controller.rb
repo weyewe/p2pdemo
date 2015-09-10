@@ -15,7 +15,15 @@ class FrontendController < ApplicationController
   private
 
   def guest_user
-    User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
+    if session[:guest_user_id].nil?
+       User.find( create_guest_user.id )  
+    else
+      object = User.find( session[:guest_user_id])
+      if object.nil? 
+        User.find( create_guest_user.id )  
+      end
+    end
+    # User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
   end
 
   def create_guest_user
