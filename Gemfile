@@ -68,5 +68,4 @@ gem 'oauth2'
 
 gem "figaro"
 gem "koala"
-
-gem 'cocoon'
+ 
