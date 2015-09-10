@@ -22,7 +22,7 @@ class LoanRequestsController < FrontendController
   
   def update
     
-    object = LoanRequest.where(:user_id => current_user.id, :id => params[:id]).order("id DESC").first 
+    @object = LoanRequest.where(:user_id => current_user.id, :id => params[:id]).order("id DESC").first 
     
      
     
